@@ -1,0 +1,43 @@
+.reg {
+  @apply w-full h-screen flex items-center;
+  .container {
+    @apply flex items-center justify-center;
+    .main_form {
+      @apply w-[510px];
+      .formHeader {
+        @apply w-full;
+        .icon {
+          @apply flex justify-center mb-[42px];
+          svg {
+            @apply w-[46px] h-[46px]  text-[#0077B5];
+          }
+        }
+        .headerText {
+          h1 {
+            @apply font-nunito text-textClr font-bold text-[35px];
+          }
+          P {
+            @apply font-nunito font-normal text-[21px] text-textClr text-center mt-[11px] mb-[51px];
+          }
+        }
+      }
+      form {
+        @apply w-full flex flex-col gap-[20px];
+        .fullName,
+        .password,
+        .emailAddres {
+          @apply h-[105px] relative;
+          > input {
+            @apply border-[2px] border-[#11175d4d] rounded-[10px] w-full h-[82px] pl-[71px] outline-none font-nunito font-semibold text-[22px] placeholder:text-textClr placeholder:text-[22px] placeholder:font-nunito placeholder:font-semibold text-textClr;
+          }
+          .error {
+            @apply placeholder:text-red-400;
+          }
+          label {
+            @apply absolute w-[185px] h-[46px] left-[47px] translate-y-[-50%] flex items-center justify-center bg-[#FFF] font-nunito font-semibold text-[16px] text-[#11175db3];
+          }
+        }
+      }
+    }
+  }
+}

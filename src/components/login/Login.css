@@ -1,4 +1,4 @@
-.reg {
+.login {
   @apply w-full h-screen flex items-center;
   .container {
     @apply flex flex-col items-center justify-center;
@@ -14,15 +14,12 @@
         }
         .headerText {
           h1 {
-            @apply font-nunito text-textClr font-bold text-[35px];
-          }
-          P {
-            @apply font-nunito font-normal text-[21px] text-textClr text-center mt-[11px] mb-[51px];
+            @apply font-nunito text-textClr font-bold text-[35px] text-center ;
           }
         }
       }
       form {
-        @apply w-full flex flex-col gap-[20px];
+        @apply w-full flex flex-col gap-[20px] mt-[62px];
         .fullName,
         .password,
         .emailAddres {
@@ -39,9 +36,9 @@
         }
       }
     }
-    .loginLink {
+    .registrationLink {
       @apply mt-[20px] font-nunito font-normal text-[21px] text-textClr text-center;
-      a{
+      a {
         @apply font-bold;
       }
     }

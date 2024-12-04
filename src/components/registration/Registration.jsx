@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { ImLinkedin } from "react-icons/im";
 import "./Registration.css";
 import CommonButton from "../../common/commonButton/CommonButton";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 import { Slide, toast } from "react-toastify";
+import { Link, useNavigate } from "react-router";
+import { Blocks } from "react-loader-spinner";
 const Registration = () => {
   // ******* variable
   const [email, setEmail] = useState("");
@@ -12,11 +17,14 @@ const Registration = () => {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   // ******* firebase variable
   const auth = getAuth();
   // ******* function part
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoader(!loader);
     if (!email) {
       setEmailError("Email is blank");
     }
@@ -33,7 +41,7 @@ const Registration = () => {
           // ...
           toast.success("Registerd successfully", {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -41,8 +49,25 @@ const Registration = () => {
             progress: undefined,
             theme: "light",
             transition: Slide,
+            onClose: () => {
+              navigate("/login"), setLoader(!loader);
+            },
           });
           console.log("🚀 ~ .then ~ user:", user);
+
+          updateProfile(auth.currentUser, {
+            // udatting the user profile
+            displayName: name,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -111,8 +136,29 @@ const Registration = () => {
                   placeholder={passwordError ? passwordError : "Password"}
                 />
               </div>
-              <CommonButton button_content={"Sign Up"} />
+              <CommonButton
+                button_content={
+                  loader ? (
+                    <Blocks
+                      height="22"
+                      width="22"
+                      color="#4fa94d"
+                      ariaLabel="blocks-loading"
+                      wrapperStyle={{}}
+                      wrapperClass="blocks-wrapper"
+                      visible={true}
+                    />
+                  ) : (
+                    "Sign Up"
+                  )
+                }
+              />
             </form>
+          </div>
+          <div className="loginLink">
+            <p>
+              Already have an account? <Link to={"/login"}>Log In</Link>
+            </p>
           </div>
         </div>
       </div>

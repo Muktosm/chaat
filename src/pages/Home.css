@@ -1,0 +1,30 @@
+.home {
+  @apply grid  grid-cols-3 py-[48px] gap-[24px] ;
+  .myGroup {
+    @apply w-[384px] h-[400px] overflow-hidden p-[16px]   rounded-[10px] shadow-[0_9px_30px_-10px_rgba(0,0,0,0.8)];
+    .sectionHeading {
+      @apply flex justify-between items-center font-inter font-semibold text-[24px] text-[#222222];
+    }
+    .searchBar {
+      @apply border-[1px] border-[#D3D3D3] rounded-[5px] mt-[16px] mb-[20px] pl-[12px];
+    }
+    .profiles {
+      @apply flex flex-col gap-[16px] justify-between;
+      .profileArea {
+        @apply w-full flex  justify-between;
+        > div {
+          @apply flex gap-[16px];
+          .profileName {
+            @apply font-inter;
+            .name {
+              @apply font-semibold text-[18px] text-[#222222];
+            }
+            .tag {
+              @apply font-normal text-[14px] text-[#7A7A7A];
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.navbar {
+  @apply w-[200px] h-[100vh] shadow-[0_16px_25px_rgba(0,0,0,0.08)] pl-[24px] pb-[50px] flex flex-col flex-shrink-0 justify-between;
+  .navHeading {
+    @apply font-inter font-bold text-[30px] text-[#32375C] pt-[50px];
+  }
+  .navLink {
+    @apply mt-[33px] w-full;
+    ul {
+      @apply flex flex-col gap-[16px];
+      li {
+        a {
+          @apply flex items-center gap-[8px] w-[140px] h-[48px] pl-[12px] pr-[32px] rounded-[5px] font-inter font-normal text-[18px] text-[#222222] transition-all duration-300 hover:font-bold hover:bg-gray-200;
+          &.active {
+            @apply font-bold bg-[#32375C] text-[#FFFFFF];
+            svg {
+              @apply text-[#FFFFFF] w-[24px] !h-[24px];
+            }
+          }
+          svg {
+            @apply w-[24px] h-[24px];
+          }
+        }
+      }
+    }
+  }
+  .profile{
+    @apply flex items-center gap-[16px];
+    .profileNameAndImage{
+      @apply flex items-center gap-[8px];
+      .name{
+        @apply font-inter;
+        h3{
+          @apply font-semibold text-[16px] text-[#32375C];
+        }
+        h4{
+          @apply font-normal text-[14px] text-[#7A7A7A];
+        }
+      }
+    }
+  }
+}

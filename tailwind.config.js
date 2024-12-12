@@ -4,6 +4,7 @@ export default {
   theme: {
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
     },
     container: {
       center: true,
